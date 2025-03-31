@@ -2,6 +2,8 @@ pipeline{
     agent any
 
     environment {
+        REPO_URL = "https://github.com/Dev-NanAyeLi/python-app.git"
+        APP_DIR = "my-python-app"
         IMAGE_NAME = "python-app"
         CONTAINER_NAME = "python-app-container"
         APP_PORT = "5000"
@@ -11,7 +13,9 @@ pipeline{
         stage('Checkout Code'){
             steps{
                 script {
-                    checkout scm # Clones respository
+                    git branch: 'main',
+                    url: REPO_URL
+                    // checkout scm # Clones respository
                 }
             }
         }
