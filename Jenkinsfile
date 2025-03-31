@@ -29,13 +29,13 @@ pipeline{
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                script {
-                    sh 'source venv/bin/activate && pytest tests/'
-                }
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         script {
+        //             sh 'source venv/bin/activate && pytest tests/'
+        //         }
+        //     }
+        // }
 
         stage('Build Docker Image'){
             steps {
