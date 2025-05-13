@@ -1,5 +1,10 @@
 pipeline{
-    agent any
+    // agent any
+    agent {
+        docker {
+            image 'python:3.11'
+        }
+    }
 
     environment {
         REPO_URL = "https://github.com/Dev-NanAyeLi/python-app.git"
