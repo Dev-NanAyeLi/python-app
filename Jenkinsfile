@@ -2,7 +2,8 @@ pipeline{
     // agent any
     agent {
         docker {
-            image 'python:3.11'
+            image 'docker:24.0.5-dind' // make sure this version exists
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
 
@@ -22,6 +23,11 @@ pipeline{
                     url: REPO_URL
                     // checkout scm # Clones respository
                 }
+            }
+        }
+        stage('Pull Python Image') {
+            steps {
+                sh 'docker pull python:3.11'
             }
         }
 
