@@ -25,11 +25,11 @@ pipeline{
                 }
             }
         }
-        stage('Pull Python Image') {
-            steps {
-                sh 'docker pull python:3.11'
-            }
-        }
+        // stage('Pull Python Image') {
+        //     steps {
+        //         sh 'docker pull python:3.11'
+        //     }
+        // }
 
         stage('Set Up Python Environment') {
             steps {
