@@ -1,11 +1,5 @@
 pipeline{
-    // agent any
-    agent {
-        docker {
-            image 'docker:24.0.5-cli'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
 
     environment {
         REPO_URL = "https://github.com/Dev-NanAyeLi/python-app.git"
@@ -25,11 +19,6 @@ pipeline{
                 }
             }
         }
-        // stage('Pull Python Image') {
-        //     steps {
-        //         sh 'docker pull python:3.11'
-        //     }
-        // }
 
         stage('Set Up Python Environment') {
             steps {
