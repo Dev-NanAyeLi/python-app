@@ -33,9 +33,16 @@ pipeline{
             steps {
                 script {
                     sh '''
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    pip install -r requirements.txt
                     export PYTHONPATH=$PWD
                     pytest tests/
                     '''
+                    // sh '''
+                    // export PYTHONPATH=$PWD
+                    // pytest tests/
+                    // '''
                     // sh 'source venv/bin/activate && pytest tests/'
                 }
             }
