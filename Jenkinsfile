@@ -29,20 +29,21 @@ pipeline{
             }
         }
 
-        // stage('Run Tests') {
-        //     steps {
-        //         script {
-        //             sh 'source venv/bin/activate && pytest tests/'
-        //         }
-        //     }
-        // }
+        stage('Run Tests') {
+            steps {
+                script {
+                    sh 'source venv/bin/activate && pytest tests/'
+                }
+            }
+        }
         
-        // stage('Check Docker'){
-        //     steps{
-        //         sh 'which docker'
-        //         sh 'docker --version'
-        //     }
-        // }
+        stage('Check PATH') {
+            steps {
+                sh 'echo $PATH'
+                sh 'which docker'
+                sh 'docker --version'
+            }
+        }
 
         stage('Build Docker Image'){
             steps {
