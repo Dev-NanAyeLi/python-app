@@ -32,7 +32,11 @@ pipeline{
         stage('Run Tests') {
             steps {
                 script {
-                    sh 'source venv/bin/activate && pytest tests/'
+                    sh '''
+                    export PYTHONPATH=$PWD
+                    pytest tests/
+                    '''
+                    // sh 'source venv/bin/activate && pytest tests/'
                 }
             }
         }
