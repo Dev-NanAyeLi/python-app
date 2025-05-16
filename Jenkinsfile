@@ -58,12 +58,24 @@ pipeline{
 
         stage('Build Docker Image'){
             steps {
-                sh '/usr/local/bin/docker build -t python-app .'
-                // script{
-                //     sh '/usr/local/bin/docker build -t $IMAGE_NAME .'
-                // }
+                script {
+                    sh '''
+                    # Verify Dockerfile
+                    cat Dockerfile
+                    # Build with full path to docker
+                    /usr/local/bin/docker build -t ${IMAGE_NAME}:latest .
+                    '''
+                }
             }
         }
+        // stage('Build Docker Image'){
+        //     steps {
+        //         sh '/usr/local/bin/docker build -t python-app .'
+        //         // script{
+        //         //     sh '/usr/local/bin/docker build -t $IMAGE_NAME .'
+        //         // }
+        //     }
+        // }
 
         // stage('Deploy to Local Docker'){
         //     steps{
