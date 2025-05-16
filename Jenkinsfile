@@ -48,29 +48,29 @@ pipeline{
             }
         }
         
-        stage('Check PATH') {
-            steps {
-                sh 'echo $PATH'
-                sh 'which docker'
-                sh 'docker --version'
-            }
-        }
+        // stage('Check PATH') {
+        //     steps {
+        //         sh 'echo $PATH'
+        //         sh 'which docker'
+        //         sh 'docker --version'
+        //     }
+        // }
 
         stage('Build Docker Image'){
             steps {
                 script{
-                    sh 'docker build -t $IMAGE_NAME .'
+                    docker.build("pythonjk-image"+"$BUILD_NUMBER")
                 }
             }
         }
 
-        stage('Deploy to Local Docker'){
-            steps{
-                script{
-                    sh 'chmod +x deploy.sh && ./deploy.sh'
-                }
-            }
-        }
+        // stage('Deploy to Local Docker'){
+        //     steps{
+        //         script{
+        //             sh 'chmod +x deploy.sh && ./deploy.sh'
+        //         }
+        //     }
+        // }
     }
 
     post{
