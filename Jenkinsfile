@@ -58,9 +58,10 @@ pipeline{
 
         stage('Build Docker Image'){
             steps {
-                script{
-                    docker.build("pythonjk-image"+"$BUILD_NUMBER")
-                }
+                sh '/usr/local/bin/docker build -t python-app .'
+                // script{
+                //     sh '/usr/local/bin/docker build -t $IMAGE_NAME .'
+                // }
             }
         }
 
