@@ -77,13 +77,13 @@ pipeline{
         //     }
         // }
 
-        // stage('Deploy to Local Docker'){
-        //     steps{
-        //         script{
-        //             sh 'chmod +x deploy.sh && ./deploy.sh'
-        //         }
-        //     }
-        // }
+        stage('Deploy to Local Docker'){
+            steps{
+                script{
+                    sh 'chmod +x deploy.sh && ./deploy.sh'
+                }
+            }
+        }
     }
 
     post{
